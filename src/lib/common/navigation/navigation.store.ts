@@ -3,7 +3,7 @@ import { LangStoreAction } from './navigation.type';
 
 const initialState = {
   activePath: null,
-  pageLoading: true,
+  pageLoading: false,
   query: {},
 };
 

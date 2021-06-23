@@ -1,5 +1,6 @@
 export const THEME_COLOR = {
-  PRIMARY: '#fff',
-
-  TEXT_SECONDARY: '#707070',
+	TEXT_SECONDARY: '#707070',
+	TEXT_PRIMARY: '#252525',
+	TEXT_ERROR: 'red',
+	DIVIDER: '#D8D8D8'
 };

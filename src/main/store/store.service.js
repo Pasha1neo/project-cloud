@@ -88,7 +88,7 @@ export const setRequestError = (state, message = null) => {
   return state;
 };
 
-export const setUpdatePending = (state) => {
+export const setRequestUpdatePending = (state) => {
   state.error = defaultData.error;
   state.errorMessage = defaultData.errorMessage;
   state.updating = true;
@@ -104,13 +104,13 @@ export const resetRequestStatus = (state) => {
 
   return state;
 };
-export const resetErrorStatus = (state) => {
+export const resetRequestErrorStatus = (state) => {
   state.error = null;
   state.errorMessage = null;
 
   return state;
 };
-export const updatePaginationData = (state, data) => {
+export const updateRequestPaginationData = (state, data) => {
   state.data.pagination = data.pagination;
 
   if (data.pagination.skip === 0) {
@@ -122,28 +122,28 @@ export const updatePaginationData = (state, data) => {
   return state;
 };
 
-export const updateData = (state, data) => {
+export const updateRequestData = (state, data) => {
   state.data = { ...state.data, ...data };
 
   if (data.pagination) {
-    state = updatePaginationData(state, data);
+    state = updateRequestPaginationData(state, data);
   }
 
   return state;
 };
 
-export const setUpdateSuccess = (state, data = null) => {
+export const setRequestUpdateSuccess = (state, data = null) => {
   state.updating = false;
   state.updated = true;
 
   if (data) {
-    state = updateData(state, data);
+    state = updateRequestData(state, data);
   }
 
   return state;
 };
 
-export const editData = (state, fn) => {
+export const editRequestData = (state, fn) => {
   state.data = fn(state.data);
   return state;
 };
@@ -151,8 +151,11 @@ export const editData = (state, fn) => {
 export const isRequestPending = (state = {}) => !!state.pending;
 export const isRequestSuccess = (state = {}) => !!state.success;
 export const isRequestError = (state = {}) => !!state.error;
-export const isUpdatePending = (state = {}) => !!state.updating;
-export const isUpdateSuccess = (state = {}) => !!state.updated;
-export const getData = (state = {}, defaultValue = {}) =>
+export const isRequestUpdatePending = (state = {}) => !!state.updating;
+export const isRequestUpdateSuccess = (state = {}) => !!state.updated;
+export const getRequestData = (state = {}, defaultValue = {}) =>
   state.data || defaultValue;
-export const getErrorMessage = (state = {}) => state.errorMessage || null;
+export const getRequestErrorMessage = (state = {}) => {
+	return   state.errorMessage || null;
+}
+

@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const config = {
+	webpack5: false,
   env: {
     API: process.env.API,
     STATIC: process.env.STATIC,
